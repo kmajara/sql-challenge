@@ -1,4 +1,20 @@
-﻿
+﻿------------Creating the 'departments' table-----------------
+
+CREATE TABLE "departments" (
+    "dept_no" VARCHAR(10) NOT NULL,
+    "dept_name" VARCHAR(30) NOT NULL,
+    CONSTRAINT "pk_departments" PRIMARY KEY ("dept_no")
+);
+
+
+------------Creating the 'titles' table-----------------
+
+CREATE TABLE "titles" (
+    "title_id" VARCHAR(10) NOT NULL,
+    "title" VARCHAR(30) NOT NULL,
+    CONSTRAINT "pk_titles" PRIMARY KEY ("title_id")
+);
+
 
 ------------Creating the 'employees' table-----------------
 
@@ -15,33 +31,6 @@ CREATE TABLE "employees" (
 );
 
 
-------------Creating the 'departments' table-----------------
-
-CREATE TABLE "departments" (
-    "dept_no" VARCHAR(10) NOT NULL,
-    "dept_name" VARCHAR(30) NOT NULL,
-    CONSTRAINT "pk_departments" PRIMARY KEY ("dept_no")
-);
-
-------------Creating the 'salaries' table-----------------
-
-CREATE TABLE "salaries" (
-    "emp_no" INT NOT NULL,
-    "salary" MONEY NOT NULL,
-    CONSTRAINT "pk_salaries" PRIMARY KEY ("emp_no"),
-    CONSTRAINT "fk_salaries_employees" FOREIGN KEY ("emp_no") REFERENCES "employees" ("emp_no")
-);
-
-
-------------Creating the 'titles' table-----------------
-
-CREATE TABLE "titles" (
-    "title_id" VARCHAR(10) NOT NULL,
-    "title" VARCHAR(30) NOT NULL,
-    CONSTRAINT "pk_titles" PRIMARY KEY ("title_id")
-);
-
-
 ------------Creating the 'dept_emp' table-----------------
 
 CREATE TABLE "dept_emp" (
@@ -53,7 +42,7 @@ CREATE TABLE "dept_emp" (
 );
 
 
-------------Creating the 'dept_manager' table-----------------
+------------Creating the 'dept_manager' table---------
 
 CREATE TABLE "dept_manager" (
     "dept_no" VARCHAR(10) NOT NULL,
@@ -62,3 +51,13 @@ CREATE TABLE "dept_manager" (
     CONSTRAINT "fk_dept_manager_employees" FOREIGN KEY ("emp_no") REFERENCES "employees" ("emp_no"),
     CONSTRAINT "fk_dept_manager_departments" FOREIGN KEY ("dept_no") REFERENCES "departments" ("dept_no")
 );
+
+------------Creating the 'salaries' table------------
+
+CREATE TABLE "salaries" (
+    "emp_no" INT NOT NULL,
+    "salary" MONEY NOT NULL,
+    CONSTRAINT "pk_salaries" PRIMARY KEY ("emp_no"),
+    CONSTRAINT "fk_salaries_employees" FOREIGN KEY ("emp_no") REFERENCES "employees" ("emp_no")
+);
+
